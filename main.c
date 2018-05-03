@@ -12,12 +12,12 @@ int main()
     return 0;
 }
 
-int wczytaniePliku(char nazwa)
+int wczytaniePliku(char nazwa)//wczytuje plik
 {
     FILE *plik;
     if((plik = fopen(nazwa, "r")) == NULL)
     {
-        printf("Blad odczytu pliku");
+        printf("Blad odczytu plikuu");
     }
 
     else
