@@ -12,6 +12,10 @@ int main()
     return 0;
 }
 
+int nowaFunkcja(int a) {
+    return a;
+}
+
 int wczytaniePliku(char nazwa)//wczytuje plik
 {
     FILE *plik;
