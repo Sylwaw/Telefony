@@ -9,11 +9,11 @@ struct LINIJKA
     linijka* next;
 };
 
-void WczytajZPliku(linijka* glowa, char *nazwa)
+linijka* WczytajZPliku(linijka* glowa, char *nazwa)
 {
     linijka *tmp, *nowy;
     //tmp = glowa;
-    char bufor[30+1];
+    char bufor[30];
     FILE* plik = fopen(nazwa, "r");
     if(plik == NULL)
     {
@@ -31,7 +31,7 @@ void WczytajZPliku(linijka* glowa, char *nazwa)
 
 			if (glowa == NULL)
             {
-                nowy = glowa;
+                glowa = nowy;
             }
             else
             {
@@ -42,16 +42,35 @@ void WczytajZPliku(linijka* glowa, char *nazwa)
             }
 
         }
-        printf("Plik zostal poprawnie wczytany");
+        printf("Plik zostal poprawnie wczytany\n");
     }
     fclose(plik);
+    //WyswietlListe(glowa);
+    return glowa;
+}
+
+void WyswietlListe(linijka* glowa)
+{
+    linijka* tmp;
+    tmp = glowa;
+    if(tmp == NULL)
+    {
+        printf("Lista jest pusta");
+    }
+    while(tmp != NULL)
+    {
+        printf("Osoba: %s\n", tmp->osoba);
+        printf("Telefon: %s\n", tmp->telefon);
+        tmp = tmp->next;
+    }
 }
 
 int main()
 {
     linijka* glowa = NULL;
-    WczytajZPliku(glowa, "plik.txt");
-
+    linijka* glowa2;
+    glowa2 = WczytajZPliku(glowa, "Plik.txt");
+    WyswietlListe(glowa2);
     return 0;
 }
 
